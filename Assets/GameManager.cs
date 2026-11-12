@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     [Header("Miscellanea")]
     int _selectedAction = 0;
     int _telephoneRotation = 0;
-    [Header("Stats")]
+    [Header("Stats")] //TODO: CHANGE THESE WHEN WEAPONS ARE IMPLEMENTED
     int _meleeDamage = 1;
     int _meleeAccuracy = 90;
     int _rangedDamage = 2;
@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject _telephone;
     [SerializeField] GameObject _inventoryMenu;
     [SerializeField] TMP_Text _inventoryItemDescription;
+    [SerializeField] Image _inventoryItemImage;
     public GameObject _enemy;
     public List<ItemBase> _itemsHeld;
 
@@ -56,6 +57,7 @@ public class GameManager : MonoBehaviour
                             _telephone.SetActive(false);
                             _inventoryMenu.SetActive(true);
                             _inventoryItemDescription.text = _itemsHeld[_selectedAction].GetComponent<ItemBase>().GetDesc();
+                            _inventoryItemImage.sprite = _itemsHeld[_selectedAction].GetComponent<ItemBase>().GetImg();
                         }
                         break;
                     case 3:
@@ -101,6 +103,7 @@ public class GameManager : MonoBehaviour
                     _selectedAction -= 1;
                 }
                 _inventoryItemDescription.text = _itemsHeld[_selectedAction].GetComponent<ItemBase>().GetDesc();
+                _inventoryItemImage.sprite = _itemsHeld[_selectedAction].GetComponent<ItemBase>().GetImg();
             }
             Debug.Log(_selectedAction);
         }
@@ -122,6 +125,7 @@ public class GameManager : MonoBehaviour
                     _selectedAction += 1;
                 }
                 _inventoryItemDescription.text = _itemsHeld[_selectedAction].GetComponent<ItemBase>().GetDesc();
+                _inventoryItemImage.sprite = _itemsHeld[_selectedAction].GetComponent<ItemBase>().GetImg();
             }
             Debug.Log(_selectedAction);
         }

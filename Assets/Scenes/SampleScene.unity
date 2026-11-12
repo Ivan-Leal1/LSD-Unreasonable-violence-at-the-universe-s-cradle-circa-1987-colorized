@@ -922,8 +922,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 7474260865072928209, guid: 9c7eab6e8dc556a4faf3f222b6b07f9d, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1413,6 +1413,7 @@ MonoBehaviour:
   _telephone: {fileID: 8185778}
   _inventoryMenu: {fileID: 453005985}
   _inventoryItemDescription: {fileID: 1212291770}
+  _inventoryItemImage: {fileID: 726090274}
   _enemy: {fileID: 1028575292}
   _itemsHeld:
   - {fileID: 1517151791758676404, guid: e8a2626644099174e87daf309581d255, type: 3}

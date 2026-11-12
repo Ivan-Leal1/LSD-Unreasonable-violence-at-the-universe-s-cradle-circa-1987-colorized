@@ -7,4 +7,8 @@ public class ItemBase : MonoBehaviour
     public virtual string GetDesc() {
         return "awa";
     }
+
+    public virtual Sprite GetImg() {
+        return null;
+    }
 }
