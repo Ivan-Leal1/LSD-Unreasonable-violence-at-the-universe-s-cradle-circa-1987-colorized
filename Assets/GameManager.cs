@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections.Generic;
+using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -27,6 +29,8 @@ public class GameManager : MonoBehaviour
     bool overworld = false;
     [Header("Publics and serialize fields")]
     [SerializeField] GameObject _telephone;
+    [SerializeField] GameObject _inventoryMenu;
+    [SerializeField] TMP_Text _inventoryItemDescription;
     public GameObject _enemy;
     public List<ItemBase> _itemsHeld;
 
@@ -49,6 +53,9 @@ public class GameManager : MonoBehaviour
                             combat = false;
                             inventory = true;
                             _selectedAction = 0;
+                            _telephone.SetActive(false);
+                            _inventoryMenu.SetActive(true);
+                            _inventoryItemDescription.text = _itemsHeld[_selectedAction].GetComponent<ItemBase>().GetDesc();
                         }
                         break;
                     case 3:
@@ -93,6 +100,7 @@ public class GameManager : MonoBehaviour
                 } else {
                     _selectedAction -= 1;
                 }
+                _inventoryItemDescription.text = _itemsHeld[_selectedAction].GetComponent<ItemBase>().GetDesc();
             }
             Debug.Log(_selectedAction);
         }
@@ -113,6 +121,7 @@ public class GameManager : MonoBehaviour
                 } else {
                     _selectedAction += 1;
                 }
+                _inventoryItemDescription.text = _itemsHeld[_selectedAction].GetComponent<ItemBase>().GetDesc();
             }
             Debug.Log(_selectedAction);
         }
@@ -123,6 +132,8 @@ public class GameManager : MonoBehaviour
             if (inventory) {
                 inventory = false;
                 combat = true;
+                _telephone.SetActive(true);
+                _inventoryMenu.SetActive(false);
                 _selectedAction = 2;
             }
         }

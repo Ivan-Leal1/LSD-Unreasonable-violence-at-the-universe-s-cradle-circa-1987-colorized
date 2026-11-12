@@ -44,3 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 613f9d2ebb209a843a6070ea487c5c69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  _selfDescription: Poison in the eye.\nIncreases melee damage by 1, decreases melee
+    accuracy by 5

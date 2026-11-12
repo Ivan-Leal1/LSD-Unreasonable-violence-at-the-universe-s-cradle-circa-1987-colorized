@@ -44,3 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfc47861e74b17a4387f997e14d34506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GenericItem
+  _selfDescription: Random.\nThis is a description
