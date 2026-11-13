@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     [Header("Miscellanea")]
     int _selectedAction = 0;
     int _telephoneRotation = 0;
+    int _textCounter;
+    bool _returnToCombatMenu;
     [Header("Stats")] //TODO: CHANGE THESE WHEN WEAPONS ARE IMPLEMENTED
     int _meleeDamage = 1;
     int _meleeAccuracy = 90;
@@ -27,13 +29,17 @@ public class GameManager : MonoBehaviour
     bool combat = true;
     bool inventory = false;
     bool overworld = false;
+    bool text = false;
     [Header("Publics and serialize fields")]
     [SerializeField] GameObject _telephone;
     [SerializeField] GameObject _inventoryMenu;
+    [SerializeField] GameObject _textBoxMenu;
     [SerializeField] TMP_Text _inventoryItemDescription;
+    [SerializeField] TMP_Text _textBoxText;
     [SerializeField] Image _inventoryItemImage;
     public GameObject _enemy;
     public List<ItemBase> _itemsHeld;
+    public List<string> _textList;
 
     public void OnUse(InputAction.CallbackContext ctx) {
         if (ctx.performed) {
@@ -61,11 +67,12 @@ public class GameManager : MonoBehaviour
                         }
                         break;
                     case 3:
-                        //talk
-                        Talk();
+                        //run
+                        Debug.Log("Run");
                         break;
                     case 4:
-                        Debug.Log("Run");
+                        //talk
+                        Talk();
                         break;
                     default:
                         break;
@@ -83,6 +90,8 @@ public class GameManager : MonoBehaviour
                 _currentMeleeDamage = _meleeDamage;
                 _currentRangedAccuracy = _rangedAccuracy;
                 _currentRangedDamage = _rangedDamage;
+            } else if (text) {
+                Next();
             }
         }
     }
@@ -174,31 +183,72 @@ public class GameManager : MonoBehaviour
     }
 
     private void AttackM() {
+        _textList.Clear();
         if (Random.Range(1, 101) <= _currentMeleeAccuracy) {
             Debug.Log("hit");
+            _textList.Add("Hit! Dealt " + _currentMeleeDamage + " damage!");
             _enemy.GetComponent<EnemyStats>().TakeDamage(_currentMeleeDamage);
         } else {
+            _textList.Add("Miss!");
             Debug.Log("Miss");
         }
         Pass();
     }
 
     private void AttackR() {
+        _textList.Clear();
         if (Random.Range(1, 101) <= _currentRangedAccuracy) {
             Debug.Log("hit");
+            _textList.Add("Hit! Dealt " + _currentRangedDamage + " damage!");
             _enemy.GetComponent<EnemyStats>().TakeDamage(_currentRangedDamage);
         } else {
+            _textList.Add("Miss!");
             Debug.Log("Miss");
         }
         Pass();
     }
 
     private void Talk() {
+        _textList.Clear();
         _enemy.GetComponent<EnemyStats>().Talk();
+        _textCounter = -1;
+        _returnToCombatMenu = true;
+        Next();
     }
 
     private void Pass() {
         _enemy.GetComponent<EnemyStats>().UseSkill();
+        _textCounter = -1;
+        _returnToCombatMenu = true;
+        Next();
+    }
+
+    private void Next() {
+        if (_textCounter == -1) {
+            combat = false;
+            overworld = false;
+            text = true;
+            _selectedAction = 0;
+            _telephone.SetActive(false);
+            _textBoxMenu.SetActive(true);
+        }
+        _textCounter += 1;
+        if (_textCounter == _textList.Count) {
+            if (_returnToCombatMenu) {
+                combat = true;
+                text = false;
+                _selectedAction = 0;
+                _telephone.SetActive(true);
+                _textBoxMenu.SetActive(false);
+            } else { //assume overworld
+                overworld = true;
+                text = false;
+                _selectedAction = 0;
+                _textBoxMenu.SetActive(false);
+            }
+        } else {
+            _textBoxText.text = _textList[_textCounter];
+        }
     }
 
     private void Update() {
