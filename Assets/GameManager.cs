@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject _telephone;
     [SerializeField] GameObject _inventoryMenu;
     [SerializeField] GameObject _textBoxMenu;
+    [SerializeField] TMP_Text _actionInfoScreenText;
     [SerializeField] TMP_Text _inventoryItemDescription;
     [SerializeField] TMP_Text _textBoxText;
     [SerializeField] Image _inventoryItemImage;
@@ -107,6 +108,7 @@ public class GameManager : MonoBehaviour
                     _selectedAction -= 1;
                 }
                 _telephoneRotation -= 72;
+                WriteToActionScreen();
             } else if (inventory) {
                 if (_selectedAction == 0) {
                     _selectedAction = _itemsHeld.Count - 1;
@@ -129,6 +131,7 @@ public class GameManager : MonoBehaviour
                     _selectedAction += 1;
                 }
                 _telephoneRotation += 72;
+                WriteToActionScreen();
             } else if (inventory) {
                 if (_selectedAction == _itemsHeld.Count - 1) {
                     _selectedAction = 0;
@@ -265,6 +268,28 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void WriteToActionScreen() {
+        switch (_selectedAction) {
+            case 0:
+                _actionInfoScreenText.text = "Melee attack!\nDamage = " + _currentMeleeDamage + "\nAccuracy = " + _currentMeleeAccuracy;
+                break;
+            case 1:
+                _actionInfoScreenText.text = "Range attack!\nDamage = " + _currentRangedDamage + "\nAccuracy = " + _currentRangedAccuracy + "\nAmmo = " + _ammo;
+                break;
+            case 2:
+                _actionInfoScreenText.text = "Inventory!\nCheck and use your items.\nUsing an item does not end the turn.";
+                break;
+            case 3:
+                _actionInfoScreenText.text = "Run!\nAttempt an escape.";
+                break;
+            case 4:
+                _actionInfoScreenText.text = "Talk!\nAttempt to extract information from your opponent.\nDoes not end your turn.";
+                break;
+            default:
+                break;
+        }
+    }
+
     private void Update() {
         if (_telephone.transform.rotation != Quaternion.Euler(0, 0, _telephoneRotation)) {
             _telephone.transform.rotation = Quaternion.Lerp(_telephone.transform.rotation, Quaternion.Euler(0, 0, _telephoneRotation), 10 * Time.deltaTime);            
@@ -278,5 +303,6 @@ public class GameManager : MonoBehaviour
         } else if (Singleton != this) {
             Destroy(gameObject);
         }
+        WriteToActionScreen();
     }
 }
