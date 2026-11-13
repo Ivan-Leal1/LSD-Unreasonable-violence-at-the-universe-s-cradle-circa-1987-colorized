@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
     int _meleeAccuracy = 90;
     int _rangedDamage = 2;
     int _rangedAccuracy = 85;
+    int _ammo = 6;
+    int _maxAmmo = 6;
     int _currentMeleeDamage = 1;
     int _currentMeleeAccuracy = 90;
     int _currentRangedDamage = 2;
@@ -163,7 +165,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void ChangeValue(int change, int stat) {
-        //0 = melee damage; 1 = melee accuracy; 2 = ranged damage; 3 = ranged accuracy
+        //0 = melee damage; 1 = melee accuracy; 2 = ranged damage; 3 = ranged accuracy; 4 = ammo
         switch (stat) {
             case 0:
                 _currentMeleeDamage += change;
@@ -176,6 +178,13 @@ public class GameManager : MonoBehaviour
                 break;
             case 3:
                 _currentRangedAccuracy += change;
+                break;
+            case 4:
+                if (_ammo + change >= _maxAmmo) {
+                    _ammo = _maxAmmo;
+                } else {
+                    _ammo += change;
+                }
                 break;
             default:
                 break;
@@ -197,15 +206,23 @@ public class GameManager : MonoBehaviour
 
     private void AttackR() {
         _textList.Clear();
-        if (Random.Range(1, 101) <= _currentRangedAccuracy) {
-            Debug.Log("hit");
-            _textList.Add("Hit! Dealt " + _currentRangedDamage + " damage!");
-            _enemy.GetComponent<EnemyStats>().TakeDamage(_currentRangedDamage);
+        _ammo -= 1;
+        if (_ammo > 0) {
+            if (Random.Range(1, 101) <= _currentRangedAccuracy) {
+                Debug.Log("hit");
+                _textList.Add("Hit! Dealt " + _currentRangedDamage + " damage!");
+                _enemy.GetComponent<EnemyStats>().TakeDamage(_currentRangedDamage);
+            } else {
+                _textList.Add("Miss!");
+                Debug.Log("Miss");
+            }
+            Pass();
         } else {
-            _textList.Add("Miss!");
-            Debug.Log("Miss");
+            _textList.Add("No ammo!");
+            _textCounter = -1;
+            _returnToCombatMenu = true;
+            Next();
         }
-        Pass();
     }
 
     private void Talk() {
@@ -228,7 +245,6 @@ public class GameManager : MonoBehaviour
             combat = false;
             overworld = false;
             text = true;
-            _selectedAction = 0;
             _telephone.SetActive(false);
             _textBoxMenu.SetActive(true);
         }
@@ -237,13 +253,11 @@ public class GameManager : MonoBehaviour
             if (_returnToCombatMenu) {
                 combat = true;
                 text = false;
-                _selectedAction = 0;
                 _telephone.SetActive(true);
                 _textBoxMenu.SetActive(false);
             } else { //assume overworld
                 overworld = true;
                 text = false;
-                _selectedAction = 0;
                 _textBoxMenu.SetActive(false);
             }
         } else {
