@@ -20,17 +20,17 @@ public class GenericEnemy : EnemyStats
         switch (_counter) {
             case 0:
                 //wait
-                GameManager.Singleton._textList.Add("Triangle is waiting...");
+                GameManager.Singleton._textList.Add("Abstract shape is waiting...");
                 break;
             case 1:
                 //attack for 1
                 GameManager.Singleton.ChangeHp(-1);
-                GameManager.Singleton._textList.Add("Triangle attacks!");
+                GameManager.Singleton._textList.Add("Abstract shape attacks!");
                 break;
             case 2:
                 //heal 1
                 TakeDamage(-1);
-                GameManager.Singleton._textList.Add("Triangle heals himself!");
+                GameManager.Singleton._textList.Add("Abstract shape heals himself!");
                 //last skill in order, repeat
                 _counter = 0;
                 break;

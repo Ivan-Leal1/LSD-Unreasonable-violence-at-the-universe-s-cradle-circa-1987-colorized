@@ -29,22 +29,25 @@ public class GameManager : MonoBehaviour
     int _maxHp = 4;
     // currently open menu.
     [Header("Menus")]
-    bool combat = true;
+    bool combat = false;
     bool inventory = false;
-    bool overworld = false;
+    bool overworld = true;
     bool text = false;
     [Header("Publics and serialize fields")]
     [SerializeField] GameObject _telephone;
     [SerializeField] GameObject _inventoryMenu;
     [SerializeField] GameObject _textBoxMenu;
-    [SerializeField] TMP_Text _actionInfoScreenText;
     [SerializeField] TMP_Text _inventoryItemDescription;
     [SerializeField] TMP_Text _textBoxText;
     [SerializeField] Image _inventoryItemImage;
     [SerializeField] List<GameObject> _dontDestroyOnLoadObjects;
-    public GameObject _enemy;
+    GameObject _enemy;
+    List<RoomBase> _roomOptions;
     public List<ItemBase> _itemsHeld;
     public List<string> _textList;
+    [Header("Screens")]
+    [SerializeField] TMP_Text _actionInfoScreenText;
+    [SerializeField] TMP_Text _roomInfoScreenText;
 
     public void OnUse(InputAction.CallbackContext ctx) {
         if (ctx.performed) {
@@ -73,7 +76,7 @@ public class GameManager : MonoBehaviour
                         break;
                     case 3:
                         //run
-                        SceneManager.LoadScene(1);
+                        //SceneManager.LoadScene(1);
                         break;
                     case 4:
                         //talk
@@ -88,13 +91,25 @@ public class GameManager : MonoBehaviour
                 if (_itemsHeld.Count == 0) {
                     inventory = false;
                     combat = true;
+                    _inventoryMenu.SetActive(false);
+                    _telephone.SetActive(true);
                     _selectedAction = 2;
+                } else if (_selectedAction != 0) {
+                    _selectedAction -= 1;
                 }
+                _inventoryItemDescription.text = _itemsHeld[_selectedAction].GetComponent<ItemBase>().GetDesc();
+                _inventoryItemImage.sprite = _itemsHeld[_selectedAction].GetComponent<ItemBase>().GetImg();
             } else if (overworld) {
                 _currentMeleeAccuracy = _meleeAccuracy;
                 _currentMeleeDamage = _meleeDamage;
                 _currentRangedAccuracy = _rangedAccuracy;
                 _currentRangedDamage = _rangedDamage;
+                _roomOptions[_selectedAction].OnUse();
+                if (_textList.Count != 0) {
+                    //assume event
+                    _textCounter = -1;
+                    Next();
+                }
             } else if (text) {
                 Next();
             }
@@ -119,6 +134,14 @@ public class GameManager : MonoBehaviour
                 }
                 _inventoryItemDescription.text = _itemsHeld[_selectedAction].GetComponent<ItemBase>().GetDesc();
                 _inventoryItemImage.sprite = _itemsHeld[_selectedAction].GetComponent<ItemBase>().GetImg();
+            } else if (overworld) {
+                if (_selectedAction == 0) {
+                    _selectedAction = 2;
+                } else {
+                    _selectedAction -= 1;
+                }
+                WriteToRoomInfoScreen(_roomOptions[_selectedAction].Desc());
+                //TODO: Show door at screen center, write desc at top right tv
             }
             Debug.Log(_selectedAction);
         }
@@ -142,6 +165,13 @@ public class GameManager : MonoBehaviour
                 }
                 _inventoryItemDescription.text = _itemsHeld[_selectedAction].GetComponent<ItemBase>().GetDesc();
                 _inventoryItemImage.sprite = _itemsHeld[_selectedAction].GetComponent<ItemBase>().GetImg();
+            } else if (overworld) {
+                if (_selectedAction == 2) {
+                    _selectedAction = 0;
+                } else {
+                    _selectedAction += 1;
+                }
+                WriteToRoomInfoScreen(_roomOptions[_selectedAction].Desc());
             }
             Debug.Log(_selectedAction);
         }
@@ -196,6 +226,31 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void ReceiveRooms(List<RoomBase> rooms) {
+        _roomOptions = rooms;
+        _selectedAction = 0;
+        WriteToRoomInfoScreen(_roomOptions[0].Desc());
+        //TODO: show door at center, show info at top right tv
+    }
+
+    public void ReceiveEnemy(GameObject enemy) {
+        _enemy = Instantiate(enemy, Vector3.zero, Quaternion.identity);
+        _selectedAction = 0;
+        //TODO: show enemy at center
+        overworld = false;
+        combat = true;
+        _telephone.SetActive(true);
+        WriteToActionScreen();
+    }
+
+    public void Victory() {
+        _textCounter = -1;
+        _returnToCombatMenu = false;
+        combat = false;
+        _telephone.SetActive(false);
+        Next();
+    }
+
     private void AttackM() {
         _textList.Clear();
         if (Random.Range(1, 101) <= _currentMeleeAccuracy) {
@@ -211,8 +266,8 @@ public class GameManager : MonoBehaviour
 
     private void AttackR() {
         _textList.Clear();
-        _ammo -= 1;
         if (_ammo > 0) {
+            _ammo -= 1;
             if (Random.Range(1, 101) <= _currentRangedAccuracy) {
                 Debug.Log("hit");
                 _textList.Add("Hit! Dealt " + _currentRangedDamage + " damage!");
@@ -239,10 +294,12 @@ public class GameManager : MonoBehaviour
     }
 
     private void Pass() {
-        _enemy.GetComponent<EnemyStats>().UseSkill();
-        _textCounter = -1;
-        _returnToCombatMenu = true;
-        Next();
+        if (_enemy.GetComponent<EnemyStats>().CurrentHp() > 0) {
+            _enemy.GetComponent<EnemyStats>().UseSkill();
+            _textCounter = -1;
+            _returnToCombatMenu = true;
+            Next();
+        }
     }
 
     private void Next() {
@@ -265,30 +322,41 @@ public class GameManager : MonoBehaviour
                 text = false;
                 _textBoxMenu.SetActive(false);
             }
+            _textList.Clear();
         } else {
             _textBoxText.text = _textList[_textCounter];
         }
     }
 
     private void WriteToActionScreen() {
-        switch (_selectedAction) {
-            case 0:
-                _actionInfoScreenText.text = "Melee attack!\nDamage = " + _currentMeleeDamage + "\nAccuracy = " + _currentMeleeAccuracy;
-                break;
-            case 1:
-                _actionInfoScreenText.text = "Range attack!\nDamage = " + _currentRangedDamage + "\nAccuracy = " + _currentRangedAccuracy + "\nAmmo = " + _ammo;
-                break;
-            case 2:
-                _actionInfoScreenText.text = "Inventory!\nCheck and use your items.\nUsing an item does not end the turn.";
-                break;
-            case 3:
-                _actionInfoScreenText.text = "Run!\nAttempt an escape.";
-                break;
-            case 4:
-                _actionInfoScreenText.text = "Talk!\nAttempt to extract information from your opponent.\nDoes not end your turn.";
-                break;
-            default:
-                break;
+        if (combat) {
+            switch (_selectedAction) {
+                case 0:
+                    _actionInfoScreenText.text = "Melee attack!\nDamage = " + _currentMeleeDamage + "\nAccuracy = " + _currentMeleeAccuracy;
+                    break;
+                case 1:
+                    _actionInfoScreenText.text = "Range attack!\nDamage = " + _currentRangedDamage + "\nAccuracy = " + _currentRangedAccuracy + "\nAmmo = " + _ammo;
+                    break;
+                case 2:
+                    _actionInfoScreenText.text = "Inventory!\nCheck and use your items.\nUsing an item does not end the turn.";
+                    break;
+                case 3:
+                    _actionInfoScreenText.text = "Run!\nAttempt an escape.";
+                    break;
+                case 4:
+                    _actionInfoScreenText.text = "Talk!\nAttempt to extract information from your opponent.\nDoes not end your turn.";
+                    break;
+                default:
+                    break;
+            }
+        } else {
+            _actionInfoScreenText.text = "Waiting for input...";
+        }
+    }
+
+    private void WriteToRoomInfoScreen(string text) {
+        if (overworld) {
+            _roomInfoScreenText.text = text;
         }
     }
 
@@ -305,6 +373,7 @@ public class GameManager : MonoBehaviour
             foreach (GameObject i in _dontDestroyOnLoadObjects) {
                 DontDestroyOnLoad(i);
             }
+            SceneManager.LoadScene(1);
         } else if (Singleton != this) {
             Destroy(gameObject);
         }
