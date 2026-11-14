@@ -46,4 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   _selfDescription: Poison in the eye.\nIncreases melee damage by 1, decreases melee
     accuracy by 5
-  _selfImage: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  _selfImage: {fileID: 98928962043308700, guid: 644eae18d6db1484097dabb0717181a4, type: 3}

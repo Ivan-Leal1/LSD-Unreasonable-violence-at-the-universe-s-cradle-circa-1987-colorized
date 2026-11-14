@@ -45,4 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   _selfDescription: Gunpowder.\nIncreases ranged damage by 2
-  _selfImage: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  _selfImage: {fileID: -1911633405228054300, guid: bae7f727ec87f3b40b87be6b8f3f0b58, type: 3}
