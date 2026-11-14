@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -40,6 +41,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] TMP_Text _inventoryItemDescription;
     [SerializeField] TMP_Text _textBoxText;
     [SerializeField] Image _inventoryItemImage;
+    [SerializeField] List<GameObject> _dontDestroyOnLoadObjects;
     public GameObject _enemy;
     public List<ItemBase> _itemsHeld;
     public List<string> _textList;
@@ -71,7 +73,7 @@ public class GameManager : MonoBehaviour
                         break;
                     case 3:
                         //run
-                        Debug.Log("Run");
+                        SceneManager.LoadScene(1);
                         break;
                     case 4:
                         //talk
@@ -299,7 +301,10 @@ public class GameManager : MonoBehaviour
     private void Awake() {
         if (Singleton == null) {
             Singleton = this;
-            DontDestroyOnLoad(gameObject);    
+            DontDestroyOnLoad(gameObject);
+            foreach (GameObject i in _dontDestroyOnLoadObjects) {
+                DontDestroyOnLoad(i);
+            }
         } else if (Singleton != this) {
             Destroy(gameObject);
         }
