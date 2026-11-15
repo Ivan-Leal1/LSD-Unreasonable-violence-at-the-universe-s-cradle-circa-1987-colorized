@@ -76,7 +76,11 @@ public class GameManager : MonoBehaviour
                         break;
                     case 3:
                         //run
-                        //SceneManager.LoadScene(1);
+                        Destroy(_enemy);
+                        combat = false;
+                        overworld = true;
+                        _telephone.SetActive(false);
+                        _selectedAction = 0;
                         break;
                     case 4:
                         //talk
@@ -240,6 +244,7 @@ public class GameManager : MonoBehaviour
         overworld = false;
         combat = true;
         _telephone.SetActive(true);
+        _telephoneRotation = 0;
         WriteToActionScreen();
     }
 
