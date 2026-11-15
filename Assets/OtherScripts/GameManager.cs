@@ -12,8 +12,10 @@ public class GameManager : MonoBehaviour
     [Header("Miscellanea")]
     int _selectedAction = 0;
     int _telephoneRotation = 0;
+    int _needleRotation = -90;
     int _textCounter;
     bool _returnToCombatMenu;
+    bool _dead = false;
     [Header("Stats")] //TODO: CHANGE THESE WHEN WEAPONS ARE IMPLEMENTED
     int _meleeDamage = 1;
     int _meleeAccuracy = 90;
@@ -25,8 +27,8 @@ public class GameManager : MonoBehaviour
     int _currentMeleeAccuracy = 90;
     int _currentRangedDamage = 2;
     int _currentRangedAccuracy = 85;
-    int _hp = 4;
-    int _maxHp = 4;
+    int _hp = 6;
+    int _maxHp = 6;
     // currently open menu.
     [Header("Menus")]
     bool combat = false;
@@ -35,6 +37,7 @@ public class GameManager : MonoBehaviour
     bool text = false;
     [Header("Publics and serialize fields")]
     [SerializeField] GameObject _telephone;
+    [SerializeField] GameObject _needle;
     [SerializeField] GameObject _inventoryMenu;
     [SerializeField] GameObject _textBoxMenu;
     [SerializeField] TMP_Text _inventoryItemDescription;
@@ -195,12 +198,22 @@ public class GameManager : MonoBehaviour
 
     public void ChangeHp(int change) {
         _hp += change;
+        if (change == 1) {
+            _needleRotation -= 30;
+        } else if (change == 2) {
+            _needleRotation -= 60;
+        }  else if (change < 0) {
+            _needleRotation += 30;
+        }
+        if (_needleRotation < -90) {
+            _needleRotation = -90;
+        }
         if (_hp <= 0) {
-            Debug.Log("Lose");
+            _dead = true;
+            _textList.Add("You have been defeated");
         } else if (_hp > _maxHp) {
             _hp = _maxHp;
         }
-        Debug.Log("player hp: " + _hp);
     }
 
     public void ChangeValue(int change, int stat) {
@@ -317,7 +330,13 @@ public class GameManager : MonoBehaviour
         }
         _textCounter += 1;
         if (_textCounter == _textList.Count) {
-            if (_returnToCombatMenu) {
+            if (_dead) {
+            foreach (GameObject i in _dontDestroyOnLoadObjects) {
+                Destroy(i);
+            }
+            SceneManager.LoadScene(3);
+            Destroy(gameObject);
+            } else if (_returnToCombatMenu) {
                 combat = true;
                 text = false;
                 _telephone.SetActive(true);
@@ -369,6 +388,9 @@ public class GameManager : MonoBehaviour
         if (_telephone.transform.rotation != Quaternion.Euler(0, 0, _telephoneRotation)) {
             _telephone.transform.rotation = Quaternion.Lerp(_telephone.transform.rotation, Quaternion.Euler(0, 0, _telephoneRotation), 10 * Time.deltaTime);            
         }
+        if (_needle.transform.rotation != Quaternion.Euler(0, 0, _needleRotation)) {
+            _needle.transform.rotation = Quaternion.Lerp(_needle.transform.rotation, Quaternion.Euler(0, 0, _needleRotation), 10 * Time.deltaTime);
+        }
     }
     
     private void Awake() {
@@ -378,7 +400,7 @@ public class GameManager : MonoBehaviour
             foreach (GameObject i in _dontDestroyOnLoadObjects) {
                 DontDestroyOnLoad(i);
             }
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(2);
         } else if (Singleton != this) {
             Destroy(gameObject);
         }

@@ -29,13 +29,13 @@ public class EnemyAbstractShape : EnemyStats
                 break;
             case 1:
                 //attack for 1
-                GameManager.Singleton.ChangeHp(-1);
                 GameManager.Singleton._textList.Add("Abstract shape attacks!");
+                GameManager.Singleton.ChangeHp(-10);
                 break;
             case 2:
                 //heal 1
+                GameManager.Singleton._textList.Add("Abstract shape heals itself!");
                 TakeDamage(-1);
-                GameManager.Singleton._textList.Add("Abstract shape heals himself!");
                 //last skill in order, repeat
                 _counter = -1;
                 break;
