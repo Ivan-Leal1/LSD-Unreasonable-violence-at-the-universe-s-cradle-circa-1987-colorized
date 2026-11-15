@@ -30,7 +30,7 @@ public class EnemyAbstractShape : EnemyStats
             case 1:
                 //attack for 1
                 GameManager.Singleton._textList.Add("Abstract shape attacks!");
-                GameManager.Singleton.ChangeHp(-10);
+                GameManager.Singleton.ChangeHp(-1);
                 break;
             case 2:
                 //heal 1
