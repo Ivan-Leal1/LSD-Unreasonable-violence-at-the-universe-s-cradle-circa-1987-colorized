@@ -198,7 +198,7 @@ public class GameManager : MonoBehaviour
 
     public void ChangeHp(int change) {
         _hp += change;
-        if (change == 1) {
+        /*if (change == 1) {
             _needleRotation -= 30;
         } else if (change == 2) {
             _needleRotation -= 60;
@@ -207,11 +207,25 @@ public class GameManager : MonoBehaviour
         }
         if (_needleRotation < -90) {
             _needleRotation = -90;
+        }*/
+        if (change > 0) {
+            for (int i = 0; i < change; i++) {
+                Debug.Log("Triggered");
+                _needleRotation -= 30;
+            }
+        } else if (change < 0) {
+            Debug.Log("Haii");
+            for (int i = 0; i > change; i--) {
+                Debug.Log("Triggered" + i);
+                _needleRotation += 30;
+            }
         }
         if (_hp <= 0) {
             _dead = true;
+            _needleRotation = 90;
             _textList.Add("You have been defeated");
         } else if (_hp > _maxHp) {
+            _needleRotation = -90;
             _hp = _maxHp;
         }
     }
