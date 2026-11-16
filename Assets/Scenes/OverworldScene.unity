@@ -302,8 +302,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   _roomList:
   - {fileID: 8137465625435691569, guid: 947bee78c7a512b40bc2e6e23e5bccd6, type: 3}
-  - {fileID: 8137465625435691569, guid: 947bee78c7a512b40bc2e6e23e5bccd6, type: 3}
-  - {fileID: 8137465625435691569, guid: 947bee78c7a512b40bc2e6e23e5bccd6, type: 3}
+  - {fileID: 423843457278432300, guid: e9b010ed34b2aa747bcf9056b263a40a, type: 3}
+  - {fileID: 2418538905945941339, guid: efc8937ca1c5ba847894c288653c4a05, type: 3}
+  _currentRoomPool: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

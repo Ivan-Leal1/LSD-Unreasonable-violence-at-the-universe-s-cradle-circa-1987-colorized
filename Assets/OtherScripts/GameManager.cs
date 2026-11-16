@@ -17,10 +17,10 @@ public class GameManager : MonoBehaviour
     bool _returnToCombatMenu;
     bool _dead = false;
     [Header("Stats")] //TODO: CHANGE THESE WHEN WEAPONS ARE IMPLEMENTED
-    int _meleeDamage = 1;
-    int _meleeAccuracy = 90;
-    int _rangedDamage = 2;
-    int _rangedAccuracy = 85;
+    public int _meleeDamage = 1;
+    public int _meleeAccuracy = 90;
+    public int _rangedDamage = 2;
+    public int _rangedAccuracy = 85;
     int _ammo = 6;
     int _maxAmmo = 6;
     int _currentMeleeDamage = 1;
@@ -360,6 +360,7 @@ public class GameManager : MonoBehaviour
                 text = false;
                 _textBoxMenu.SetActive(false);
             }
+            WriteToActionScreen();
             _textList.Clear();
         } else {
             _textBoxText.text = _textList[_textCounter];

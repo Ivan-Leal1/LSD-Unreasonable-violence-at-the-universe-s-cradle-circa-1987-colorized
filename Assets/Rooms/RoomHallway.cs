@@ -16,8 +16,8 @@ public class RoomHallway : RoomBase
         } else if (i > 50 && i <= 80) {
             Debug.Log("Event");
             GameManager.Singleton._textList.Add("You are in a hallway");
-            GameManager.Singleton._textList.Add("On the floor, you found some gunpowder!");
-            GameManager.Singleton._textList.Add("Gunpowder added to your inventory");
+            GameManager.Singleton._textList.Add("On the floor, you found a cigar!");
+            GameManager.Singleton._textList.Add("Cigarette added to your inventory");
             GameManager.Singleton._itemsHeld.Add(_item.GetComponent<ItemBase>());
         } else if (i > 80) {
             Debug.Log("Secret third thing");

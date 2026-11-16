@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   _encounter: {fileID: 6285324050544587257, guid: 6eec8700b143b5a4aab2c04ed3adffbb, type: 3}
-  _item: {fileID: 3915373365794735700, guid: 1ca7414f0a2b93640acb5f20a39878ba, type: 3}
+  _item: {fileID: 687905133995739350, guid: 269bfdce153c5ec42a3acf71e4636263, type: 3}
   _description: A normal hallway to connect rooms.\nCalculated events:\n50% - Face
-    the abstract shape.\n30% - Find gunpowder.\n20% - Take a nap
+    the abstract shape.\n30% - Find cigarette.\n20% - Take a nap
   _selfDoor: {fileID: 0}
