@@ -48,4 +48,4 @@ MonoBehaviour:
   _item: {fileID: 3915373365794735700, guid: 1ca7414f0a2b93640acb5f20a39878ba, type: 3}
   _description: Where we built weapons.\nCalculated events:\n50% - face the prototype.\n30%
     - find gunpowder\n20% - Upgrade your weapons.
-  _selfDoor: {fileID: 0}
+  _selfDoor: {fileID: 160050565675398074, guid: 1d2b60669a7163346aa98be2e816afaa, type: 3}

@@ -45,4 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   _selfDescription: Medkit.\nRecover 4 hp.
-  _selfImage: {fileID: 0}
+  _selfImage: {fileID: -3826845409251182802, guid: 2dde8af5bbca6554ebe3eca24b379b0e, type: 3}

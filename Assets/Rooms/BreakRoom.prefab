@@ -48,4 +48,4 @@ MonoBehaviour:
   _item: {fileID: 4716876050223189695, guid: b802e0169408e7a49a45b3f425037e0b, type: 3}
   _description: Where we used to rest.\nCalculated events:\n50% - Encounter the thing
     in the window.\n30% - Find a medkit.\n20% - Take a nap.
-  _selfDoor: {fileID: 0}
+  _selfDoor: {fileID: 6627982195832652892, guid: 1c1513cf99377ca479bc5c346264ff98, type: 3}
