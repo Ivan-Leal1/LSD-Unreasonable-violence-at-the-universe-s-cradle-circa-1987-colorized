@@ -46,6 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   _encounter: {fileID: 952317983229276017, guid: c10f6df7d90af56429007fa9d4fd6646, type: 3}
   _item: {fileID: 3915373365794735700, guid: 1ca7414f0a2b93640acb5f20a39878ba, type: 3}
-  _description: The lab where we used to fabricate weapons.\nCalculated events:\n50%
-    - face the prototype.\n30% - find gunpowder\n20% - Upgrade your weapons.
+  _description: Where we built weapons.\nCalculated events:\n50% - face the prototype.\n30%
+    - find gunpowder\n20% - Upgrade your weapons.
   _selfDoor: {fileID: 0}

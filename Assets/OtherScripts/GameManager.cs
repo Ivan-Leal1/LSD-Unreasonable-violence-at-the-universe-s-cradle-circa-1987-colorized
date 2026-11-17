@@ -39,10 +39,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject _telephone;
     [SerializeField] GameObject _needle;
     [SerializeField] GameObject _inventoryMenu;
+    [SerializeField] GameObject _centerImageMenu;
     [SerializeField] GameObject _textBoxMenu;
     [SerializeField] TMP_Text _inventoryItemDescription;
     [SerializeField] TMP_Text _textBoxText;
     [SerializeField] Image _inventoryItemImage;
+    [SerializeField] Image _centerScreenImage;
     [SerializeField] List<GameObject> _dontDestroyOnLoadObjects;
     GameObject _enemy;
     List<RoomBase> _roomOptions;
@@ -83,6 +85,7 @@ public class GameManager : MonoBehaviour
                         combat = false;
                         overworld = true;
                         _telephone.SetActive(false);
+                        _centerImageMenu.SetActive(true);
                         _selectedAction = 0;
                         break;
                     case 4:
@@ -148,7 +151,7 @@ public class GameManager : MonoBehaviour
                     _selectedAction -= 1;
                 }
                 WriteToRoomInfoScreen(_roomOptions[_selectedAction].Desc());
-                //TODO: Show door at screen center, write desc at top right tv
+                _centerScreenImage.sprite = _roomOptions[_selectedAction].GetImg();
             }
             Debug.Log(_selectedAction);
         }
@@ -179,6 +182,7 @@ public class GameManager : MonoBehaviour
                     _selectedAction += 1;
                 }
                 WriteToRoomInfoScreen(_roomOptions[_selectedAction].Desc());
+                _centerScreenImage.sprite = _roomOptions[_selectedAction].GetImg();
             }
             Debug.Log(_selectedAction);
         }
@@ -261,16 +265,17 @@ public class GameManager : MonoBehaviour
         _roomOptions = rooms;
         _selectedAction = 0;
         WriteToRoomInfoScreen(_roomOptions[0].Desc());
-        //TODO: show door at center, show info at top right tv
+        _centerScreenImage.sprite = _roomOptions[0].GetImg();
     }
 
     public void ReceiveEnemy(GameObject enemy) {
-        _enemy = Instantiate(enemy, Vector3.zero, Quaternion.identity);
+        _enemy = Instantiate(enemy, new Vector3(0, 1, 0), Quaternion.identity);
         _selectedAction = 0;
         //TODO: show enemy at center
         overworld = false;
         combat = true;
         _telephone.SetActive(true);
+        _centerImageMenu.SetActive(false);
         _telephoneRotation = 0;
         WriteToActionScreen();
     }
@@ -280,6 +285,7 @@ public class GameManager : MonoBehaviour
         _returnToCombatMenu = false;
         combat = false;
         _telephone.SetActive(false);
+        _centerImageMenu.SetActive(true);
         Next();
     }
 

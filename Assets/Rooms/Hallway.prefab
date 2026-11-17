@@ -48,4 +48,4 @@ MonoBehaviour:
   _item: {fileID: 687905133995739350, guid: 269bfdce153c5ec42a3acf71e4636263, type: 3}
   _description: A normal hallway to connect rooms.\nCalculated events:\n50% - Face
     the abstract shape.\n30% - Find cigarette.\n20% - Take a nap
-  _selfDoor: {fileID: 0}
+  _selfDoor: {fileID: -6137669141786571880, guid: 8c8311ba0f73f3a469561442c4ba143b, type: 3}
