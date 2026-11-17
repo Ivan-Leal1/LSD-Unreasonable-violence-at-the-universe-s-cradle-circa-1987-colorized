@@ -45,4 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   _selfDescription: Cigarette.\nHeals 1 hp.
-  _selfImage: {fileID: 5348037993738455246, guid: 4b0dc84bf9fe76347818338c4ba9e16e, type: 3}
+  _selfImage: {fileID: -1750713194605700551, guid: 4b0dc84bf9fe76347818338c4ba9e16e, type: 3}

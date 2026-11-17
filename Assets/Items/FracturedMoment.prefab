@@ -45,4 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   _selfDescription: A fractured moment.\nLose 5 ranged accuracy, gain 5 melee accuracy.
-  _selfImage: {fileID: 0}
+  _selfImage: {fileID: 378912892361772757, guid: bff7914747431914c89656f4cd8985d7, type: 3}

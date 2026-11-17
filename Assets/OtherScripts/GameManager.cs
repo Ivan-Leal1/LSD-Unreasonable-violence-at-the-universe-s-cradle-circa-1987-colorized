@@ -46,6 +46,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] Image _inventoryItemImage;
     [SerializeField] Image _centerScreenImage;
     [SerializeField] List<GameObject> _dontDestroyOnLoadObjects;
+    [SerializeField] List<AudioClip> _clips;
+    [SerializeField] AudioSource _audioPlayer;
     GameObject _enemy;
     List<RoomBase> _roomOptions;
     public List<ItemBase> _itemsHeld;
@@ -68,7 +70,7 @@ public class GameManager : MonoBehaviour
                         break;
                     case 2:
                         //inventory
-                        Debug.Log("Inventory");
+                        _audioPlayer.PlayOneShot(_clips[1]);
                         if (_itemsHeld.Count != 0) {
                             combat = false;
                             inventory = true;
@@ -115,6 +117,7 @@ public class GameManager : MonoBehaviour
                 _currentRangedAccuracy = _rangedAccuracy;
                 _currentRangedDamage = _rangedDamage;
                 _roomOptions[_selectedAction].OnUse();
+                _audioPlayer.PlayOneShot(_clips[2]);
                 if (_textList.Count != 0) {
                     //assume event
                     _textCounter = -1;
@@ -153,6 +156,7 @@ public class GameManager : MonoBehaviour
                 WriteToRoomInfoScreen(_roomOptions[_selectedAction].Desc());
                 _centerScreenImage.sprite = _roomOptions[_selectedAction].GetImg();
             }
+            _audioPlayer.PlayOneShot(_clips[0]);
             Debug.Log(_selectedAction);
         }
     }
@@ -184,6 +188,7 @@ public class GameManager : MonoBehaviour
                 WriteToRoomInfoScreen(_roomOptions[_selectedAction].Desc());
                 _centerScreenImage.sprite = _roomOptions[_selectedAction].GetImg();
             }
+            _audioPlayer.PlayOneShot(_clips[0]);
             Debug.Log(_selectedAction);
         }
     }
