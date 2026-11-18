@@ -84,11 +84,9 @@ public class GameManager : MonoBehaviour
                     case 3:
                         //run
                         Destroy(_enemy);
-                        combat = false;
-                        overworld = true;
-                        _telephone.SetActive(false);
-                        _centerImageMenu.SetActive(true);
+                        _textList.Add("Escaped successfully!");
                         _selectedAction = 0;
+                        Victory();
                         break;
                     case 4:
                         //talk
@@ -361,6 +359,8 @@ public class GameManager : MonoBehaviour
                 text = false;
                 _textBoxMenu.SetActive(false);
             }
+            WriteToRoomInfoScreen(_roomOptions[_selectedAction].Desc());
+            _centerScreenImage.sprite = _roomOptions[_selectedAction].GetImg();
             WriteToActionScreen();
             _textList.Clear();
         } else {
