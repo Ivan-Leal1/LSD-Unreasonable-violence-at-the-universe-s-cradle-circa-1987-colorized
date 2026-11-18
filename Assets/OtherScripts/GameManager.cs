@@ -207,16 +207,6 @@ public class GameManager : MonoBehaviour
 
     public void ChangeHp(int change) {
         _hp += change;
-        /*if (change == 1) {
-            _needleRotation -= 30;
-        } else if (change == 2) {
-            _needleRotation -= 60;
-        }  else if (change < 0) {
-            _needleRotation += 30;
-        }
-        if (_needleRotation < -90) {
-            _needleRotation = -90;
-        }*/
         if (change > 0) {
             for (int i = 0; i < change; i++) {
                 Debug.Log("Triggered");
