@@ -122,6 +122,8 @@ public class GameManager : MonoBehaviour
                 _currentRangedDamage = _rangedDamage;
                 _roomOptions[_selectedAction].OnUse();
                 _audioPlayer.PlayOneShot(_clips[2]);
+                _statusTexts[0] = "Player hp: " + _hp;
+                _statusTexts[2] = "";
                 if (_textList.Count != 0) {
                     //assume event
                     _textCounter = -1;
@@ -439,5 +441,6 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
         WriteToActionScreen();
+        WriteToStatusScreen();
     }
 }
