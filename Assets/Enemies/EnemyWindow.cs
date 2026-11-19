@@ -18,6 +18,7 @@ public class EnemyWindow : EnemyStats
             GameManager.Singleton.Victory();
             Destroy(gameObject);
         }
+        GameManager.Singleton._statusTexts[1] = "Enemy hp: " + _hp;
         Debug.Log("enemy hp: " + _hp);
     }
 
@@ -59,5 +60,9 @@ public class EnemyWindow : EnemyStats
 
     public override int CurrentHp() {
         return _hp;
+    }
+
+    private void Awake() {
+        GameManager.Singleton._statusTexts[1] = "Enemy hp: " + _hp;
     }
 }

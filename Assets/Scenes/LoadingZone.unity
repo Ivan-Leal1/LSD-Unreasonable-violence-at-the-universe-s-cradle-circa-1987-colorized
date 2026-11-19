@@ -1443,6 +1443,11 @@ MonoBehaviour:
   _textList: []
   _actionInfoScreenText: {fileID: 1861603518}
   _roomInfoScreenText: {fileID: 1476820048}
+  _statusInfoScreenText: {fileID: 328321308}
+  _statusTexts:
+  - 'Player hp: '
+  - 'Enemy hp: '
+  - ' '
 --- !u!114 &1155361179
 MonoBehaviour:
   m_ObjectHideFlags: 0

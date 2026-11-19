@@ -18,6 +18,7 @@ public class EnemyAbstractShape : EnemyStats
             GameManager.Singleton.Victory();
             Destroy(gameObject);
         }
+        GameManager.Singleton._statusTexts[1] = "Enemy hp: " + _hp;
         Debug.Log("enemy hp: " + _hp);
     }
 
@@ -56,6 +57,6 @@ public class EnemyAbstractShape : EnemyStats
     }
 
     private void Awake() {
-        Debug.Log("Instantiated successfuly!");
+        GameManager.Singleton._statusTexts[1] = "Enemy hp: " + _hp;
     }
 }
