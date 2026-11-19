@@ -1438,6 +1438,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: dfbb99acf18a7ac499053a2a7fc12083, type: 3}
   - {fileID: 8300000, guid: 455a8505128d59d478285610c2263165, type: 3}
   - {fileID: 8300000, guid: a8588193a2a84744db99f7be0ae7a926, type: 3}
+  - {fileID: 8300000, guid: fc2c3bd379ee0a0499213389f1610021, type: 3}
+  - {fileID: 8300000, guid: 1947bbd9b9cccd3499b99adc9112f98b, type: 3}
+  - {fileID: 8300000, guid: b67914f874b280e4bb9773139db5920e, type: 3}
   _audioPlayer: {fileID: 1155361181}
   _itemsHeld: []
   _textList: []

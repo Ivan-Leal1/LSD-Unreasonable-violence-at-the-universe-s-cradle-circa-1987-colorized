@@ -104,6 +104,7 @@ public class GameManager : MonoBehaviour
             } else if (inventory) {
                 _itemsHeld[_selectedAction].OnUse();
                 _itemsHeld.RemoveAt(_selectedAction);
+                _audioPlayer.PlayOneShot(_clips[5]);
                 if (_itemsHeld.Count == 0) {
                     inventory = false;
                     combat = true;
@@ -299,6 +300,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("hit");
             _textList.Add("Hit! Dealt " + _currentMeleeDamage + " damage!");
             _enemy.GetComponent<EnemyStats>().TakeDamage(_currentMeleeDamage);
+            _audioPlayer.PlayOneShot(_clips[3]);
         } else {
             _textList.Add("Miss!");
             Debug.Log("Miss");
@@ -314,6 +316,7 @@ public class GameManager : MonoBehaviour
                 Debug.Log("hit");
                 _textList.Add("Hit! Dealt " + _currentRangedDamage + " damage!");
                 _enemy.GetComponent<EnemyStats>().TakeDamage(_currentRangedDamage);
+                _audioPlayer.PlayOneShot(_clips[4]);
             } else {
                 _textList.Add("Miss!");
                 Debug.Log("Miss");
