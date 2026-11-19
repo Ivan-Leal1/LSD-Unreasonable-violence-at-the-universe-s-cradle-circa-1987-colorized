@@ -15,6 +15,6 @@ public class ButtonScript : MonoBehaviour
     }
 
     public void Exit() {
-        Debug.Log("Exit");
+        Application.Quit();
     }
 }

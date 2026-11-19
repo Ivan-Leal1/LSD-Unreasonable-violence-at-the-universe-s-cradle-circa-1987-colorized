@@ -19,6 +19,7 @@ public class EnemyPrototype : EnemyStats
             GameManager.Singleton.Victory();
             Destroy(gameObject);
         }
+        GameManager.Singleton._statusTexts[1] = "Enemy hp: " + _hp;
         Debug.Log("enemy hp: " + _hp);
     }
 
@@ -30,6 +31,9 @@ public class EnemyPrototype : EnemyStats
                 break;
             case 1:
                 GameManager.Singleton._textList.Add("Prototype loses 1 hp. All damage dealt by prototype has been increased by 1");
+                TakeDamage(1);
+                _damage += 1;
+                GameManager.Singleton._statusTexts[2] = "Charge: " + (_damage-1);
                 break;
             case 2:
                 GameManager.Singleton._textList.Add("Prototype is waiting...");
@@ -50,5 +54,9 @@ public class EnemyPrototype : EnemyStats
 
     public override int CurrentHp() {
         return _hp;
+    }
+
+    private void Awake() {
+        GameManager.Singleton._statusTexts[1] = "Enemy hp: " + _hp;
     }
 }

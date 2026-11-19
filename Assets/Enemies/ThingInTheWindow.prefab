@@ -48,9 +48,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   _hp: 4
   _speech:
-  - ... keheheh
-  - Go on. Do it.
-  - Tigthen the rope around my neck.
+  - Come out.
+  - Come onto these yellow sands.
+  - The sun is warm and the water is pleasant.
+  - Come on. Do it. Join us.
+  - Join us join us join us join us join us.
   _itemReward: {fileID: 2395124175709318856, guid: eeeffb012dea4ab4c937361f297f1e04, type: 3}
 --- !u!212 &-8476900760577575577
 SpriteRenderer:

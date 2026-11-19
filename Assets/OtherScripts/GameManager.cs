@@ -23,10 +23,10 @@ public class GameManager : MonoBehaviour
     public int _rangedAccuracy = 85;
     int _ammo = 6;
     int _maxAmmo = 6;
-    int _currentMeleeDamage = 1;
-    int _currentMeleeAccuracy = 90;
-    int _currentRangedDamage = 2;
-    int _currentRangedAccuracy = 85;
+    int _currentMeleeDamage;
+    int _currentMeleeAccuracy;
+    int _currentRangedDamage;
+    int _currentRangedAccuracy;
     int _hp = 6;
     int _maxHp = 6;
     // currently open menu.
@@ -55,6 +55,12 @@ public class GameManager : MonoBehaviour
     [Header("Screens")]
     [SerializeField] TMP_Text _actionInfoScreenText;
     [SerializeField] TMP_Text _roomInfoScreenText;
+    [SerializeField] TMP_Text _statusInfoScreenText;
+    public string[] _statusTexts = {
+        "Player hp: ",
+        "Enemy hp: ",
+        " "
+    };
 
     public void OnUse(InputAction.CallbackContext ctx) {
         if (ctx.performed) {
@@ -116,6 +122,8 @@ public class GameManager : MonoBehaviour
                 _currentRangedDamage = _rangedDamage;
                 _roomOptions[_selectedAction].OnUse();
                 _audioPlayer.PlayOneShot(_clips[2]);
+                _statusTexts[0] = "Player hp: " + _hp;
+                _statusTexts[2] = "";
                 if (_textList.Count != 0) {
                     //assume event
                     _textCounter = -1;
@@ -217,6 +225,7 @@ public class GameManager : MonoBehaviour
                 _needleRotation += 30;
             }
         }
+        _statusTexts[0] = "Player hp: " + _hp;
         if (_hp <= 0) {
             _dead = true;
             _needleRotation = 90;
@@ -225,6 +234,7 @@ public class GameManager : MonoBehaviour
             _needleRotation = -90;
             _hp = _maxHp;
         }
+        WriteToStatusScreen();
     }
 
     public void ChangeValue(int change, int stat) {
@@ -271,6 +281,7 @@ public class GameManager : MonoBehaviour
         _centerImageMenu.SetActive(false);
         _telephoneRotation = 0;
         WriteToActionScreen();
+        WriteToStatusScreen();
     }
 
     public void Victory() {
@@ -362,6 +373,7 @@ public class GameManager : MonoBehaviour
             WriteToRoomInfoScreen(_roomOptions[_selectedAction].Desc());
             _centerScreenImage.sprite = _roomOptions[_selectedAction].GetImg();
             WriteToActionScreen();
+            WriteToStatusScreen();
             _textList.Clear();
         } else {
             _textBoxText.text = _textList[_textCounter];
@@ -400,6 +412,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void WriteToStatusScreen() {
+        if (combat) {
+            _statusInfoScreenText.text = _statusTexts[0] + "\n" + _statusTexts[1] + "\n" + _statusTexts[2];
+        } else {
+            _statusInfoScreenText.text = "Waiting for input...";
+        }
+    }
+
     private void Update() {
         if (_telephone.transform.rotation != Quaternion.Euler(0, 0, _telephoneRotation)) {
             _telephone.transform.rotation = Quaternion.Lerp(_telephone.transform.rotation, Quaternion.Euler(0, 0, _telephoneRotation), 10 * Time.deltaTime);            
@@ -421,5 +441,6 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
         WriteToActionScreen();
+        WriteToStatusScreen();
     }
 }
