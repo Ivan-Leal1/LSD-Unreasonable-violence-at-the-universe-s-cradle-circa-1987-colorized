@@ -1,0 +1,429 @@
+fileFormatVersion: 2
+guid: bb52b78139c234c47ba7fa490654a008
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4627723505239136750
+    second: ThingINTheWindowSpriteSheet_0
+  - first:
+      213: 1760671315758990337
+    second: ThingINTheWindowSpriteSheet_1
+  - first:
+      213: -3890889310358643002
+    second: ThingINTheWindowSpriteSheet_2
+  - first:
+      213: -7964706836652492680
+    second: ThingINTheWindowSpriteSheet_3
+  - first:
+      213: 6722741129488176018
+    second: ThingINTheWindowSpriteSheet_4
+  - first:
+      213: -8568655209188273176
+    second: ThingINTheWindowSpriteSheet_5
+  - first:
+      213: -5440742651976756890
+    second: ThingINTheWindowSpriteSheet_6
+  - first:
+      213: 7895693056506964773
+    second: ThingINTheWindowSpriteSheet_7
+  - first:
+      213: -4096935566426886288
+    second: ThingINTheWindowSpriteSheet_8
+  - first:
+      213: 6193159513125740614
+    second: ThingINTheWindowSpriteSheet_9
+  - first:
+      213: 1686765943839223499
+    second: ThingINTheWindowSpriteSheet_10
+  - first:
+      213: 1165538974130697399
+    second: ThingINTheWindowSpriteSheet_11
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ThingINTheWindowSpriteSheet_0
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 2405
+        width: 685
+        height: 571
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 216ee7f9df507cfb0800000000000000
+      internalID: -4627723505239136750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThingINTheWindowSpriteSheet_1
+      rect:
+        serializedVersion: 2
+        x: 1026
+        y: 2372
+        width: 685
+        height: 571
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 104c806bb392f6810800000000000000
+      internalID: 1760671315758990337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThingINTheWindowSpriteSheet_2
+      rect:
+        serializedVersion: 2
+        x: 1884
+        y: 2356
+        width: 685
+        height: 571
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ce55bb79c8c00ac0800000000000000
+      internalID: -3890889310358643002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThingINTheWindowSpriteSheet_3
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 1647
+        width: 685
+        height: 571
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 878f335b45da77190800000000000000
+      internalID: -7964706836652492680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThingINTheWindowSpriteSheet_4
+      rect:
+        serializedVersion: 2
+        x: 978
+        y: 1621
+        width: 685
+        height: 571
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2931d0c4079fb4d50800000000000000
+      internalID: 6722741129488176018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThingINTheWindowSpriteSheet_5
+      rect:
+        serializedVersion: 2
+        x: 1857
+        y: 1592
+        width: 685
+        height: 571
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e358856c75061980800000000000000
+      internalID: -8568655209188273176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThingINTheWindowSpriteSheet_6
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 874
+        width: 685
+        height: 571
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 661db9262699e74b0800000000000000
+      internalID: -5440742651976756890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThingINTheWindowSpriteSheet_7
+      rect:
+        serializedVersion: 2
+        x: 957
+        y: 864
+        width: 684
+        height: 571
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52bad907003239d60800000000000000
+      internalID: 7895693056506964773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThingINTheWindowSpriteSheet_8
+      rect:
+        serializedVersion: 2
+        x: 1839
+        y: 869
+        width: 685
+        height: 571
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07f267f0fc2c427c0800000000000000
+      internalID: -4096935566426886288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThingINTheWindowSpriteSheet_9
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 117
+        width: 685
+        height: 571
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 640e031b3c582f550800000000000000
+      internalID: 6193159513125740614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThingINTheWindowSpriteSheet_10
+      rect:
+        serializedVersion: 2
+        x: 953
+        y: 157
+        width: 685
+        height: 571
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bce63c560b8986710800000000000000
+      internalID: 1686765943839223499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ThingINTheWindowSpriteSheet_11
+      rect:
+        serializedVersion: 2
+        x: 1813
+        y: 169
+        width: 685
+        height: 571
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b4feec8583dc2010800000000000000
+      internalID: 1165538974130697399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      ThingINTheWindowSpriteSheet_0: -4627723505239136750
+      ThingINTheWindowSpriteSheet_1: 1760671315758990337
+      ThingINTheWindowSpriteSheet_10: 1686765943839223499
+      ThingINTheWindowSpriteSheet_11: 1165538974130697399
+      ThingINTheWindowSpriteSheet_2: -3890889310358643002
+      ThingINTheWindowSpriteSheet_3: -7964706836652492680
+      ThingINTheWindowSpriteSheet_4: 6722741129488176018
+      ThingINTheWindowSpriteSheet_5: -8568655209188273176
+      ThingINTheWindowSpriteSheet_6: -5440742651976756890
+      ThingINTheWindowSpriteSheet_7: 7895693056506964773
+      ThingINTheWindowSpriteSheet_8: -4096935566426886288
+      ThingINTheWindowSpriteSheet_9: 6193159513125740614
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
